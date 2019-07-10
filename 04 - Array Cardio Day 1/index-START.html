@@ -100,13 +100,25 @@
       const aNames = a.split(", ");
       const bNames = b.split(", ");
       return aNames[0] > bNames[0] ? 1 : -1
-  })
+    })
 
     console.table(alphabetic);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const datafied = data.reduce(function(object, item) {
+      if(item in object) {
+        object[item] += 1;
+        return object;
+      } else {
+        object[item] = 1;
+        return object;
+      }
+    }, {})
+
+    console.log(datafied);
 
   </script>
 </body>
