@@ -19,7 +19,9 @@
 
   const cities = [];
 
-  fetch(endpoint);
+ fetch(endpoint)
+ .then(blob => blob.json())
+ .then(data => console.log(data))
 
 </script>
 </body>
