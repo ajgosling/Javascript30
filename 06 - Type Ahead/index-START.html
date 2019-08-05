@@ -19,10 +19,16 @@
 
   const cities = [];
 
- fetch(endpoint)
- .then(blob => blob.json())
- .then(data => console.log(data))
+fetch(endpoint)
+.then(blob => blob.json())
+.then(data => console.log(data))
 
+function findMatches(word, cities) {
+  return cities.filter(place => {
+    const regex = new RegExp(word, 'gi');
+    return place.city.match(regex) || place.state.match(regex)
+  })
+}
 </script>
 </body>
 </html>
