@@ -29,7 +29,10 @@
       const regex = new RegExp(wordToMatch, 'gi')
       return place.city.match(regex) || place.state.match(regex)
     });
+
+    suggestions.innerHTML = html;
   }
+
   function displayMatches() {
     const matchArray = findMatches(this.value, cities);
     const html = matchArray.map(place => {
@@ -39,7 +42,8 @@
           <span class="population">${place.population}</span>
         </li>
       `
-    })
+    });
+    console.log( html )
   }
 
   const searchInput = document.querySelector('.search');
