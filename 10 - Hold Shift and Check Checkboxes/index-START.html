@@ -99,21 +99,26 @@
   let prevClicked = 8;
   let shift = false;
 
-  // document.onkeypress('keydown', (e) => {
-  //   if(e.keyCode === 16) {
-  //     shift = true;
-  //     console.log("hi");
-  //   }
-  // });
-  document.onkeypress((e) => console.log(e))
+  window.onkeydown = (e) => {
+    if(e.key === "Shift") {
+      shift = true;
+      console.log(shift)
+    }
+  }
+
+  window.onkeyup = (e) => {
+    if(e.key === "Shift") {
+      shift = false;
+      console.log(shift)
+    }
+  }
 
   const checks = document.querySelectorAll('.inbox input[type="checkbox"]');
-  console.log(checks);
+
   checks.forEach((check, index) => {
     check.addEventListener('change', (e) => {
       if(check.checked) {
         prevClicked = index
-        console.log
       } else {
       }
     })
