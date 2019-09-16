@@ -107,22 +107,13 @@
   // });
   document.onkeypress((e) => console.log(e))
 
-  // document.onkeypress('keyup', (e) => {
-  //   if(e.keyCode === 16) {
-  //     shift = false;
-  //     console.log("p");
-  //   }
-  // })
-
   const checks = document.querySelectorAll('.inbox input[type="checkbox"]');
   console.log(checks);
   checks.forEach((check, index) => {
-    console.log(index);
     check.addEventListener('change', (e) => {
       if(check.checked) {
         prevClicked = index
         console.log
-
       } else {
       }
     })
