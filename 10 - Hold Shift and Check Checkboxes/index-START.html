@@ -96,6 +96,7 @@
   </div>
 
 <script>
+  // // MY solution
   // let prevClicked = 8;
   // let shift = false;
 
@@ -138,9 +139,27 @@
 
   checks = document.querySelectorAll('input');
 
+  let prevClicked;
 
   function handleClick(e) {
-    console.log(e);
+
+    if(e.shiftKey) {
+      let inBetween = false;
+
+      checks.forEach(check => {
+        if(check === prevClicked || check === this) {
+          inBetween = !inBetween
+        }
+
+        if(inBetween) {
+          check.checked = true;
+        }
+
+      })
+
+    }
+
+    prevClicked = this;
   }
 
   checks.forEach(check => {
