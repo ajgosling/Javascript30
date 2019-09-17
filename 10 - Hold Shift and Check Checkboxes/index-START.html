@@ -30,6 +30,10 @@
       border-bottom: 0;
     }
 
+    .prev {
+      border: 1px solid blue;
+    }
+
     input:checked + p {
       background: #F9F9F9;
       text-decoration: line-through;
@@ -99,28 +103,43 @@
   let prevClicked = 8;
   let shift = false;
 
+
+  const checks = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'));
+  // console.log(checks);
+
   window.onkeydown = (e) => {
     if(e.key === "Shift") {
       shift = true;
-      console.log(shift)
+
+      checks[prevClicked].addClass
+
     }
   }
 
   window.onkeyup = (e) => {
     if(e.key === "Shift") {
       shift = false;
-      console.log(shift)
     }
   }
-
-  const checks = document.querySelectorAll('.inbox input[type="checkbox"]');
 
   checks.forEach((check, index) => {
     check.addEventListener('change', (e) => {
       if(check.checked) {
-        prevClicked = index
-      } else {
+        if(shift) {
+          if(index < prevClicked) {
+            // check everything from index to prevClicked
+            checks.slice(index, prevClicked).forEach(toCheck => {
+              toCheck.checked = true;
+            })
+          } else {
+            // check everything from prevClicked to index
+            checks.slice(prevClicked + 1, index + 1).forEach(toCheck => {
+              toCheck.checked = true;
+            })
+          }
+        }
       }
+      prevClicked = index;
     })
   })
 
