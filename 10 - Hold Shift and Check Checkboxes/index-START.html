@@ -96,44 +96,55 @@
   </div>
 
 <script>
-  let prevClicked = 8;
-  let shift = false;
+  // let prevClicked = 8;
+  // let shift = false;
 
 
-  const checks = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'));
-  // console.log(checks);
+  // const checks = Array.from(document.querySelectorAll('.inbox input[type="checkbox"]'));
+  // // console.log(checks);
 
-  window.onkeydown = (e) => {
-    if(e.key === "Shift") {
-      shift = true;
-    }
+  // window.onkeydown = (e) => {
+  //   if(e.key === "Shift") {
+  //     shift = true;
+  //   }
+  // }
+
+  // window.onkeyup = (e) => {
+  //   if(e.key === "Shift") {
+  //     shift = false;
+  //   }
+  // }
+
+  // checks.forEach((check, index) => {
+  //   check.addEventListener('change', (e) => {
+  //     if(check.checked) {
+  //       if(shift) {
+  //         if(index < prevClicked) {
+  //           // check everything from index to prevClicked
+  //           checks.slice(index, prevClicked).forEach(toCheck => {
+  //             toCheck.checked = true;
+  //           })
+  //         } else {
+  //           // check everything from prevClicked to index
+  //           checks.slice(prevClicked + 1, index + 1).forEach(toCheck => {
+  //             toCheck.checked = true;
+  //           })
+  //         }
+  //       }
+  //     }
+  //     prevClicked = index;
+  //   })
+  // })
+
+  checks = document.querySelectorAll('input');
+
+
+  function handleClick(e) {
+    console.log(e);
   }
 
-  window.onkeyup = (e) => {
-    if(e.key === "Shift") {
-      shift = false;
-    }
-  }
-
-  checks.forEach((check, index) => {
-    check.addEventListener('change', (e) => {
-      if(check.checked) {
-        if(shift) {
-          if(index < prevClicked) {
-            // check everything from index to prevClicked
-            checks.slice(index, prevClicked).forEach(toCheck => {
-              toCheck.checked = true;
-            })
-          } else {
-            // check everything from prevClicked to index
-            checks.slice(prevClicked + 1, index + 1).forEach(toCheck => {
-              toCheck.checked = true;
-            })
-          }
-        }
-      }
-      prevClicked = index;
-    })
+  checks.forEach(check => {
+    check.addEventListener('click', handleClick)
   })
 
 </script>
