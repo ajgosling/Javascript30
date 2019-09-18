@@ -25,7 +25,11 @@ function updateButton() {
 
 function skip() {
   console.log(this.dataset);
-  video.currentTime += Number(this.dataset.skip)
+  video.currentTime += Number(this.dataset.skip);
+}
+
+function handleRangeUpdate() {
+
 }
 
 // Hook up Event Listeners
@@ -37,4 +41,8 @@ video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 skipButtons.forEach(button => {
   button.addEventListener("click", skip);
+})
+ranges.forEach(range => {
+  range.addEventListener("change", handleRangeUpdate);
+  range.addEventListener("mousemove", handleRangeUpdate);
 })
