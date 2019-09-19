@@ -6,8 +6,7 @@ const progressBar = document.querySelector('.progress__filled');
 const toggle = document.querySelector('.toggle');
 const skipButtons = document.querySelectorAll('[data-skip]');
 const ranges = document.querySelectorAll('.player__slider');
-
-
+const fullscreen = document.querySelector('.fullscreen');
 
 // Build our functions
 function togglePlay() {
@@ -24,7 +23,6 @@ function updateButton() {
 }
 
 function skip() {
-  console.log(this.dataset);
   video.currentTime += Number(this.dataset.skip);
 }
 
@@ -41,6 +39,18 @@ function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
   console.log(e);
+}
+
+function toggleFullscreen() {
+  full = !full
+
+  if(full) {
+    player.style.width = "100%";
+    player.style.height = "100%";
+  } else {
+    player.style.width = "";
+    player.style.height = "";
+  }
 }
 
 
@@ -61,8 +71,11 @@ ranges.forEach(range => {
 })
 
 let mousedown;
+let full = false;
 
 progress.addEventListener("click", scrub);
 progress.addEventListener("mousemove", (e) => mousedown && scrub(e));
 progress.addEventListener("mousedown", () => mousedown = true);
 progress.addEventListener("mouseup", () => mousedown = false);
+
+fullscreen.addEventListener("click", toggleFullscreen);
