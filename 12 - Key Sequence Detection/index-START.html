@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+
+  const keys = []
+  const code = "hello"
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e);
+    keys.push(e.key);
+    console.log(keys);
+    let lastCode = keys.slice(keys.length - code.length, keys.length).join("");
+    console.log(lastCode);
+    // if (keys.slice(keys.length - code.length, keys.length).join("")) {
+
+    // }
+  })
 </script>
 </body>
 </html>
