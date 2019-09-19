@@ -9,15 +9,13 @@
 <script>
 
   const keys = []
-  const code = "hello"
+  const code = "jam"
 
   window.addEventListener('keyup', (e) => {
-    console.log(e);
     keys.push(e.key);
-    console.log(keys);
     let lastCode = keys.slice(keys.length - code.length, keys.length).join("");
     if(code === lastCode) {
-      console.log("here");
+      cornify_add();
     }
   })
 </script>
