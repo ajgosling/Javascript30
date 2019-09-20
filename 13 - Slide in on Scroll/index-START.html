@@ -59,18 +59,20 @@
     }
 
     const sliderImages = document.querySelectorAll('.slide-in');
-    console.log(sliderImages)
 
     function checkSlide(e) {
       sliderImages.forEach(slideImage => {
-        var bottomWindowHeight = window.scrollY + window.innerHeight
-        var slideMidHeight = parseInt(slideImage.height / 2) + slideImage.offsetTop
+        const windowBottom = window.scrollY + window.innerHeight;
+        const imageMid = slideImage.offsetTop + (slideImage.height / 2);
+        const imageBottom = slideImage.offsetTop + slideImage.height;
+        const pastMid = windowBottom > imageMid;
+        const notPast = window.scrollY < imageBottom;
 
-        if(bottomWindowHeight > slideMidHeight) {
-
+        if(pastMid && notPast) {
+          slideImage.classList.add("active");
+        } else {
+          slideImage.classList.remove("active");
         }
-
-
       })
     }
 
