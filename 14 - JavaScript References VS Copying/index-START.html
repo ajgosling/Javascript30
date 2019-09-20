@@ -59,8 +59,8 @@
 
     // how do we take a copy instead?
     const person2 = Object.assign({}, person, {body: 90});
-    console.log(person2);
-    console.log(person, person2);
+    const person3 = JSON.parse(JSON.stringify(person));
+    console.table(person)
 
     // We will hopefully soon see the object ...spread
 
