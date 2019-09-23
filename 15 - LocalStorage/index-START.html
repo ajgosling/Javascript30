@@ -64,13 +64,25 @@
     items[index].done = !items[index].done;
     localStorage.setItem('items', JSON.stringify(items));
     populateList(items, itemsList);
-
   }
 
   function checkAllBoxes() {
-    console.log("hello!");
+    items.forEach(item => {
+      // For each box, alter done to be true, then populate list
+      item.done = true;
+    })
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
   }
 
+  function clearAllBoxes() {
+    items.forEach(item => {
+      // For each box, alter done to be true, then populate list
+      item.done = false;
+    })
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
+  }
   addItems.addEventListener('submit', addItem)
 
   populateList(items, itemsList);
@@ -78,6 +90,7 @@
   itemsList.addEventListener('click', toggleDone);
 
   checkAll.addEventListener('click', checkAllBoxes);
+  clearAll.addEventListener('click', clearAllBoxes);
 
 </script>
 
